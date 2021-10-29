@@ -1,0 +1,14 @@
+{% extends 'polls/navigation.html' %}
+
+{% block content %}
+
+<div style="border: 1px solid #237523; background: #fabfd3; position:absolute; top: 30%; left: 38%; width: 400px">
+        <h2 align="center">Создание вопроса</h2>
+</div>
+<form align="center" style="margin-top: 350px" action="{% url 'polls:create' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input class="btn btn-primary btn-lg btn-success" type="submit" value="Create"/>
+</form>
+
+{% endblock %}

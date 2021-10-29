@@ -1,0 +1,31 @@
+{% extends 'polls/navigation.html' %}
+
+{% block content %}
+{% if latest_blog_list %}
+<div style="border: 1px solid #237523; background: #fabfd3; position:absolute; top: 30%; left: 36%; width: 400px">
+    <h1 align="center" class="p-2 ">Блоги</h1>
+</div>
+<div style="position:absolute; top:44%; left:37%">
+    <ul>
+        {% for blog in latest_blog_list %}
+        <li>
+            <a href="{% url 'blogs:detail' blog.id %}">{{ blog.title }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <div style="margin-left: 120px">
+        <p><a class="btn btn-success btn-lg"
+              onclick="document.location='../../blogs/create'">Создать блог</a></p>
+    </div>
+</div>
+{% else %}
+
+<div style="border: 1px solid #237523; background: #fabfd3; position:absolute; top: 30%; left: 36%; width: 400px">
+    <h1 align="center">Блоги</h1>
+</div>
+<h4 align="center" style="margin: 10px; margin-top: 260px">Нет доступных блогов
+    <p><a class="btn btn-success btn-lg" style="margin: 10px; margin-top: 40px"
+          onclick="document.location='../../blogs/create'">Создать блог</a></p></h4>
+{% endif %}
+
+{% endblock %}

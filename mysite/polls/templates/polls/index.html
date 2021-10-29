@@ -1,0 +1,33 @@
+{% extends 'polls/navigation.html' %}
+
+{% block content %}
+{% if latest_question_list %}
+<div style="border: 1px solid #237523; background: #fabfd3; position:absolute; top: 30%; left: 36%; width: 400px">
+    <h1 align="center" class="p-2">Вопросы</h1>
+</div>
+<div style="position:absolute; top:44%; left:37%">
+    <ul>
+        {% for question in latest_question_list %}
+        <li>
+            <a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <div style="margin-left: 70px">
+        <a class="btn btn-success btn-sm"
+           onclick="document.location='../../polls/create'">Создать вопрос</a>
+        <a class="btn btn-success btn-sm"
+           onclick="document.location='../../polls/create_choice'">Создать выбор</a></p>
+    </div>
+</div>
+
+{% else %}
+<div style="border: 1px solid #237523; background: #fabfd3; position:absolute; top: 30%; left: 36%; width: 400px">
+    <h1 align="center">Вопросы</h1>
+</div>
+<h4 align="center" style="margin: 10px; margin-top: 260px">Вопросов нет
+    <p><a class="btn btn-success btn-lg" style="margin: 10px; margin-top: 40px"
+          onclick="document.location='../../polls/create'">Create question</a></p></h4>
+{% endif %}
+
+{% endblock %}
